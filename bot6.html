@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agriculture Chatbot</title>
+    <style>
+        body {
+            font-size: 20px;
+        }
+        .input-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            font-size: 18px;
+            padding: 5px 10px;
+        }
+        input {
+            font-size: 18px;
+            padding: 5px;
+        }
+    </style>
+    <script>
+        let prices = {
+            "rice": 60,
+            "millet": 120,
+            "wheat": 37
+        };
+
+        let availableLocations = ["kerala", "punjab", "tamil nadu"];
+
+        function showLocations() {
+            document.getElementById("result").innerText = `Available locations: ${availableLocations.join(", ")}`;
+        }
+
+        function showPrices() {
+            let priceDetails = Object.entries(prices).map(([crop, price]) => `${crop}: INR ${price}/kg`).join("\n");
+            document.getElementById("result").innerText = `Available crops and prices:\n${priceDetails}`;
+        }
+    </script>
+</head>
+<body>
+    <h2>Welcome to the Agriculture Chatbot</h2>
+    
+    <div class="input-container">
+        <label for="cropInput">Enter crop name:</label>
+        <input type="text" id="cropInput">
+        <button onclick="showPrices()">Price</button>
+    </div>
+    
+    <div class="input-container">
+        <label for="locationInput">Enter location:</label>
+        <input type="text" id="locationInput">
+        <button onclick="showLocations()">Locations</button>
+    </div>
+    
+    <p id="result"></p>
+</body>
+</html>
